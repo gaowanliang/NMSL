@@ -145,40 +145,52 @@
         </div>
     </div>
 
-    <div class="mdui-text-center mdui-typo-body-2-opacity" style="margin-top: 20px;">欢迎各位👴在下方评论区提供建议或bug</div>
-    <div style="padding:0 20px;" id="lv-container" data-id="city" data-uid="MTAyMC80Njc4NC8yMzI4NQ==">
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
+    <div class="mdui-panel mdui-container" style="margin-top: 20px;" mdui-panel>
+        <div class="mdui-panel-item ">
+            <div class="mdui-panel-item-header">
+                <div class="mdui-panel-item-title">点击展开评论区</div>
+                <div class="mdui-panel-item-summary">欢迎各位👴在下方评论区提供建议或bug</div>
+                <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-panel-item-body">
+                <div style="padding:0 20px;" id="lv-container" data-id="city" data-uid="MTAyMC80Njc4NC8yMzI4NQ=="></div>
+            </div>
+        </div>
 
-                if (typeof LivereTower === 'function') {
-                    return;
-                }
+    </div>
 
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
+    <script type="text/javascript">
+        (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
 
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+            if (typeof LivereTower === 'function') {
+                return;
+            }
 
-        <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
-        <script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.js"></script>
-        <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js"></script>
-        <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js"></script>
-        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js"></script>
-        <script type="text/javascript" src="assert/js/main.min.js">
-        </script>
-        <footer class="mdui-center mdui-text-center">
-            <p>一个纯前端的抽象话转换器 Powered by:高玩梁</p>
-            <p>本页面使用了纯前端中文分词系统，加载较缓慢，请耐心等待</p>
-        </footer>
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+
+    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+    <script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js"></script>
+    <script type="text/javascript" src="assert/js/main.min.js">
+    </script>
+    <footer class="mdui-center mdui-text-center">
+        <p>一个纯前端的抽象话转换器 Powered by:高玩梁</p>
+        <p>本页面使用了纯前端中文分词系统，加载较缓慢，请耐心等待</p>
+    </footer>
 </body>
 
 </html>
