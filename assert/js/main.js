@@ -30,7 +30,7 @@ var sy = { 'xiao': '笑', 'xiaoku': '笑哭', 'se': '色', 'qin': '亲', 'ku': '
         '警察': '👮',
         '工人': '👷',
         '农民工': '👷',
-        '秃子': '👨\u200d',
+        '秃子': '👨',
         '圣诞': '🎅',
         '圣诞老人': '🎅',
         '走': '🚶',
@@ -690,10 +690,35 @@ var sy = { 'xiao': '笑', 'xiaoku': '笑哭', 'se': '色', 'qin': '亲', 'ku': '
         '哦': '嗷',
         '呀': '嗷'
     }
+const emojiRegex = require('emoji-regex');
 const {
     Segment,
     useDefault
 } = require('segmentit');
+
+
+const regex = emojiRegex();
+
+function isEmojiChar(text) {
+    if (regex.exec(text) == null) {
+        if (regex.exec(text) == null) {
+            return false
+        } else {
+            if (text.search(/[\u{4e00}-\u{9fa5}_a-zA-Z0-9]/ug) == -1) {
+                return true
+            } else {
+                return false
+            }
+
+        }
+    }
+    if (text.search(/[\u{4e00}-\u{9fa5}_a-zA-Z0-9]/ug) == -1) {
+        return true
+    } else {
+        return false
+    }
+}
+
 const segmentit = useDefault(new Segment());
 var inst = new mdui.Tab('#tab'), index = 0;
 document.getElementById('tab').addEventListener('change.mdui.tab', function (event) {
@@ -739,32 +764,40 @@ const distribute = (text, mode) => {
 };
 
 const ifEmoji = (text) => {
-    /*
-      用一个最悠久而常见 emoji 来判断当前系统是使用图片还是字体来显示 emoji，
-      若是图片则去做上色比对，否则只对可见性做判断。
-    */
     const mode = distribute('😁');
     return distribute(text, mode);
 }
+var bfl = Object.assign({}, light), bfsy = Object.assign({}, sy)
+Object.keys(light).forEach(function (key) {
+    if (!ifEmoji(light[key]) && isEmojiChar(light[key])) {
+        eval("delete bfl." + key)
+        eval("delete bfsy." + pinyinUtil.getPinyin(key, '', false, true))
+    }
+});
 
 $("#up").click(function () {
     var res = ''
     console.log(index, 1)
     if (index == 0) {
         var k = $("#t").val(),
-            jieba = segmentit.doSegment(k);
+            jieba = segmentit.doSegment(k),
+            ck = light,
+            indexa = sy
+        if ($("input[id='checklook']").is(':checked') == true) {
+            ck = bfl, indexa = bfsy
+        }
         console.log(jieba)
         if ($("input[name='group1']:checked").val() == "1") {
             for (i = 0, len = jieba.length; i < len; i++) {
                 var word = jieba[i]['w'].trim()
-                if (typeof (light[word]) != "undefined" && ifEmoji(light[word])) {
-                    res += light[word]
+                if (typeof (ck[word]) != "undefined") {
+                    res += ck[word]
                 } else {
                     if (word.length > 0) {
                         characters = word.split("")
                         for (j = 0, wlen = characters.length; j < wlen; j++) {
-                            if (typeof (light[characters[j]]) != "undefined" && ifEmoji(characters[j])) {
-                                res += light[characters[j]]
+                            if (typeof (ck[characters[j]]) != "undefined") {
+                                res += ck[characters[j]]
                             } else {
                                 res += characters[j]
                             }
@@ -777,24 +810,24 @@ $("#up").click(function () {
         } else {
             for (i = 0, len = jieba.length; i < len; i++) {
                 var word = jieba[i]['w'].trim(),
-                    r = light[word]
-                if (typeof (r) != "undefined" && ifEmoji(r)) {
-                    res += light[word]
+                    r = ck[word]
+                if (typeof (r) != "undefined") {
+                    res += ck[word]
                 } else if (typeof (r) == "undefined") {
                     var wordPy = pinyinUtil.getPinyin(word, '', false, true)
-                    if (typeof (sy[wordPy]) != "undefined" && ifEmoji(sy[wordPy])) {
-                        res += light[sy[wordPy]]
+                    if (typeof (indexa[wordPy]) != "undefined") {
+                        res += ck[indexa[wordPy]]
                     } else {
                         if (word.length > 0) {
                             characters = word.split("")
                             for (j = 0, wlen = characters.length; j < wlen; j++) {
                                 var character = characters[j]
-                                if (typeof (light[character]) != "undefined" && ifEmoji(light[character])) {
-                                    res += light[character]
+                                if (typeof (ck[character]) != "undefined") {
+                                    res += ck[character]
                                 } else {
                                     var characterPy = pinyinUtil.getPinyin(character, '', false, true)
-                                    if (typeof (sy[characterPy]) != "undefined" && ifEmoji(light[sy[characterPy]])) {
-                                        res += light[sy[characterPy]]
+                                    if (typeof (indexa[characterPy]) != "undefined") {
+                                        res += ck[indexa[characterPy]]
                                     } else {
                                         res += character
                                     }
@@ -817,7 +850,11 @@ $("#up").click(function () {
             res = res.replace(/我/g, "👴")
         }
     } else if (index == 1) {
-        res = (($("#t1").val()).split("")).join(" ")
+        if ($("input[id='zhadd']").is(':checked') != true) {
+            res = (($("#t1").val()).split("")).join(" ")
+        } else {
+            res = ($("#t1").val()).replace(/([\u4e00-\u9fa5])/g, " $1 ").replace(/  /g, " ").trim()
+        }
     }
     $("#res").text(res)
     $('#copy').attr('data-clipboard-text', res)

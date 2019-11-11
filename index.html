@@ -37,7 +37,8 @@
             <label>抽象带师</label>
         </a>
         <a href="#tab2" class="mdui-ripple mdui-ripple-white">
-            <i class="mdui-icon material-icons">&#xe572;</i>
+            <i class="mdui-icon material-icons"><img style="width: 24px"
+                    src="https://cdn.jsdelivr.net/gh/gaowanliang/p/114514.png" /></i>
             <label>打字带空格</label>
         </a>
     </div>
@@ -91,6 +92,11 @@
                     <input type="checkbox" id="checkye" />
                     <i class="mdui-checkbox-icon"></i>
                     "我"转化为"👴"
+                </label><br>
+                <label class="mdui-checkbox">
+                    <input type="checkbox" id="checklook" />
+                    <i class="mdui-checkbox-icon"></i>
+                    如果发现转换后的结果缺字或乱码，请选中这个
                 </label>
             </div>
         </div>
@@ -129,6 +135,13 @@
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">请输入需要加空格的话</label>
                 <textarea class="mdui-textfield-input" id="t1" type="text" required></textarea>
+            </div>
+            <div>
+                <label class="mdui-checkbox">
+                    <input type="checkbox" id="zhadd" />
+                    <i class="mdui-checkbox-icon"></i>
+                    只有中文之间才加空格，数字，英文不加
+                </label>
             </div>
         </div>
     </div>
@@ -180,6 +193,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js"></script>
     <script type="text/javascript" src="assert/js/main.min.js">
     </script>
     <footer class="mdui-center mdui-text-center">
