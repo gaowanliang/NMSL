@@ -837,7 +837,7 @@ $("#up").click(function () {
                             res += word.trim()
                         }
                     }
-                }
+                } 
             }
         }
         if ($("input[id='checkda']").is(':checked') == true) {
