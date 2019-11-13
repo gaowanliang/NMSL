@@ -67,6 +67,7 @@
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">请输入需要抽象的话</label>
                 <textarea class="mdui-textfield-input" id="t" type="text" required></textarea>
+                <div class="mdui-textfield-helper">如果分词不准确，可自行加空格分词</div>
             </div>
             <div>
                 <label class="mdui-radio">
@@ -153,7 +154,7 @@
     </div>
     <div class="mdui-dialog" id="example-1">
         <div class="mdui-dialog-title">抽象结果</div>
-        <div class="mdui-dialog-content" id='res'>你说你🐎呢¿</div>
+        <div class="mdui-dialog-content" id='res'>出现错误，请重试</div>
         <div class="mdui-dialog-actions">
             <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
             <button id="copy" class="btn mdui-btn mdui-ripple" data-clipboard-text="" mdui-dialog-confirm>复制</button>
@@ -196,7 +197,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js"></script>
-    <script type="text/javascript" src="assert/js/main.min.js">
+    <script type="text/javascript" src="src/js/main.min.js">
     </script>
     <footer class="mdui-center mdui-text-center">
         <p>一个纯前端的抽象话转换器 Powered by:高玩梁</p>
