@@ -1,4 +1,4 @@
-var light = {
+var sj = {
     '笑': '😁',
     '笑哭': '😂',
     '色': '😍',
@@ -692,8 +692,7 @@ var light = {
     "安道尔": "🇦🇩",
     "阿联酋": "🇦🇪",
     "阿富汗": "🇦🇫",
-    "安提瓜和巴布达":
-        "🇦🇬",
+    "安提瓜和巴布达": "🇦🇬",
     "安圭拉": "🇦🇮",
     "阿尔巴尼亚": "🇦🇱",
     "亚美尼亚": "🇦🇲",
@@ -1024,10 +1023,10 @@ const ifEmoji = (text) => {
     const mode = distribute('😁');
     return distribute(text, mode);
 }
-var bfl = Object.assign({}, light), bfsy = {}, sy = {}
-Object.keys(light).forEach(function (key) {
+var bfl = Object.assign({}, sj), bfsy = {}, sy = {}
+Object.keys(sj).forEach(function (key) {
     sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-    if (!ifEmoji(light[key]) && isEmojiChar(light[key])) {
+    if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
         eval("delete bfl." + key)
     } else {
         bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
@@ -1040,7 +1039,7 @@ $("#up").click(function () {
     if (index == 0) {
         var k = $("#t").val(),
             jieba = segmentit.doSegment(k),
-            ck = light,
+            ck = sj,
             indexa = sy
         if ($("input[id='checklook']").is(':checked') == true) {
             ck = bfl, indexa = bfsy
@@ -1125,6 +1124,7 @@ clipboard.on('success', function (e) {
         message: '复制成功'
     });
 });
+
 clipboard.on('error', function (e) {
     mdui.snackbar({
         message: '复制失败，用其他浏览器试试？'
