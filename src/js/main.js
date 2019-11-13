@@ -1,6 +1,4 @@
 var sj = {}
-
-
 function isEmojiChar(text) {
     if (regex.exec(text) == null) {
         if (regex.exec(text) == null) {
@@ -20,6 +18,12 @@ function isEmojiChar(text) {
         return false
     }
 }
+
+if(window.location.href.indexOf("gitee")!=-1)
+{
+    $("body").addClass("mdui-theme-primary-red mdui-theme-accent-red")
+}
+
 
 var segmentit, regex
 var inst = new mdui.Tab('#tab'), index = 0;
@@ -204,44 +208,43 @@ function onDemandScript(url, callback) {
 var done = true
 $("#up").click(function () {
     if (done) {
-        $.getJSON('/src/data/emoji.json', function (data) {
+        $.getJSON('src/data/emoji.json', function (data) {
             sj = data
-        })
-        $("#te").hide();
-        $("#p2").show();
-        t = 0
-        onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js', function () {
-            console.log("segmentit.js done")
-            const {
-                Segment,
-                useDefault
-            } = require('segmentit');
-            segmentit = useDefault(new Segment());
-            addProcess()
-        });
-        onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js', function () {
-            console.log("emoji-regex.js done")
-            const emojiRegex = require('emoji-regex');
-            regex = emojiRegex();
-            addProcess()
-        });
-
-
-        onDemandScript("https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js",
-            function () {
-                console.log("pinyin_dict_withtone.min.js done")
+            $("#te").hide();
+            $("#p2").show();
+            t = 0
+            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js', function () {
+                console.log("segmentit.js done")
+                const {
+                    Segment,
+                    useDefault
+                } = require('segmentit');
+                segmentit = useDefault(new Segment());
                 addProcess()
-            })
-        onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js', function () {
-            console.log("pinyin_dict_polyphone.min.js done")
-            addProcess()
-        });
-        onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js', function () {
-            console.log("pinyinUtil.min.js done")
-            addProcess()
-        });
+            });
+            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js', function () {
+                console.log("emoji-regex.js done")
+                const emojiRegex = require('emoji-regex');
+                regex = emojiRegex();
+                addProcess()
+            });
+            onDemandScript("https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js",
+                function () {
+                    console.log("pinyin_dict_withtone.min.js done")
+                    addProcess()
+                })
+            onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js', function () {
+                console.log("pinyin_dict_polyphone.min.js done")
+                addProcess()
+            });
+            onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js', function () {
+                console.log("pinyinUtil.min.js done")
+                addProcess()
+            });
 
-        done--
+            done--
+        })
+
     } else {
         changes()
     }
