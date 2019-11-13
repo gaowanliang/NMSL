@@ -59,6 +59,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mdui-card-actions">
+                            <button class="mdui-btn mdui-ripple"
+                                onclick="location.href='https://chouxiang.ml'">国际版网站</button>
+                            <button class="mdui-btn mdui-ripple"
+                                onclick="location.href='https://gaowanliang.gitee.io/nmsl/'">国内版网站</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,6 +86,47 @@
                     <i class="mdui-radio-icon"></i>
                     高度抽象
                 </label>
+                <button class="mdui-btn mdui-btn-raised mdui-color-theme-accent" mdui-menu="{target: '#example-2'}"
+                    disabled>选择肤色:现在是👴</button>
+                <ul class="mdui-menu" id="example-2">
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon"></i>开发中
+                        </a>
+                    </li>
+                    <li class="mdui-divider"></li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon mdui-icon material-icons">👴</i>0
+                        </a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon mdui-icon material-icons">👴🏻</i>1-2
+                        </a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon mdui-icon material-icons">👴🏼</i>3
+                        </a>
+                    </li>
+
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon mdui-icon material-icons">👴🏽</i>4
+                        </a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon mdui-icon material-icons">👴🏾</i>5
+                        </a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple">
+                            <i class="mdui-menu-item-icon mdui-icon material-icons">👴🏿</i>6
+                        </a>
+                    </li>
+                </ul>
                 <br>
                 <label id="checkbox-1" class="mdui-checkbox">
                     <input type="checkbox" id="checkda" />
@@ -130,6 +177,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mdui-card-actions">
+                            <button class="mdui-btn mdui-ripple"
+                                onclick="location.href='https://chouxiang.ml'">国际版网站</button>
+                            <button class="mdui-btn mdui-ripple"
+                                onclick="location.href='https://gaowanliang.gitee.io/nmsl/'">国内版网站</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,7 +207,15 @@
     </div>
     <div class="mdui-dialog" id="example-1">
         <div class="mdui-dialog-title">抽象结果</div>
-        <div class="mdui-dialog-content" id='res'>出现错误，请重试</div>
+        <div class="mdui-progress">
+            <div id="p1" class="mdui-progress-determinate" style="width: 20%;"></div>
+        </div>
+        <div class="mdui-dialog-content" id='res'>
+            <p id="te">出现错误，请重试</p>
+            <div id="p2" style="display: none;">
+                <div class="mdui-spinner mdui-spinner-colorful"></div>正在加载，请稍后
+            </div>
+        </div>
         <div class="mdui-dialog-actions">
             <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
             <button id="copy" class="btn mdui-btn mdui-ripple" data-clipboard-text="" mdui-dialog-confirm>复制</button>
@@ -162,7 +223,7 @@
     </div>
 
     <div class="mdui-panel mdui-container" style="margin-top: 20px;" mdui-panel>
-        <div class="mdui-panel-item ">
+        <div class="mdui-panel-item" onclick="livere()">
             <div class="mdui-panel-item-header">
                 <div class="mdui-panel-item-title">点击展开评论区</div>
                 <div class="mdui-panel-item-summary">欢迎各位👴在下方评论区提供建议或bug</div>
@@ -175,27 +236,12 @@
 
     </div>
 
-    <script type="text/javascript">
-        (function (d, s) {
-            var j, e = d.getElementsByTagName(s)[0];
-            if (typeof LivereTower === 'function') { return; }
-            j = d.createElement(s);
-            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-            j.async = true;
-            e.parentNode.insertBefore(j, e);
-        })(document, 'script');
-    </script>
     <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
 
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
     <script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.js"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js"></script>
+
     <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js"></script>
     <script type="text/javascript" src="src/js/main.min.js">
     </script>

@@ -38,7 +38,21 @@ console.log(result);
 
 部分emoji在某些平台上尚未支持(如🦴,Windows 10平台可以看见是骨头，Android则为错误显示)，我使用了[1]中的方法在前端对emoji词库进行了修改，使其在任何平台都不会乱码。
 
-
+#### 动态加载js提高速度
+使用这个方法
+```javascript
+function onDemandScript(url, callback) {
+    callback = (typeof callback != 'undefined') ? callback : {};
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: callback,
+        dataType: "script",
+        cache: true
+    });
+}
+```
+即可实现动态加载js同时实现缓存，比getScript好很多
 
 ### 参考资料
  

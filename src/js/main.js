@@ -947,12 +947,6 @@ var sj = {
     "津巴布韦": "🇿🇼"
 }
 const emojiRegex = require('emoji-regex');
-const {
-    Segment,
-    useDefault
-} = require('segmentit');
-
-
 const regex = emojiRegex();
 
 function isEmojiChar(text) {
@@ -975,7 +969,7 @@ function isEmojiChar(text) {
     }
 }
 
-const segmentit = useDefault(new Segment());
+var segmentit
 var inst = new mdui.Tab('#tab'), index = 0;
 document.getElementById('tab').addEventListener('change.mdui.tab', function (event) {
     index = event._detail.index
@@ -1024,16 +1018,41 @@ const ifEmoji = (text) => {
     return distribute(text, mode);
 }
 var bfl = Object.assign({}, sj), bfsy = {}, sy = {}
-Object.keys(sj).forEach(function (key) {
-    sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-    if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
-        eval("delete bfl." + key)
-    } else {
-        bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-    }
-});
 
-$("#up").click(function () {
+function loading() {
+    Object.keys(sj).forEach(function (key) {
+        sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
+        if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
+            eval("delete bfl." + key)
+        } else {
+            bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
+        }
+    });
+}
+var kuan = 1, k1 = 1
+function addProcess() {
+    kuan++
+    eval('$("#p1").width("' + 20 * kuan + '%")')
+    if (kuan >= 5) {
+        loading()
+        $("#p1").hide();
+        changes()
+    }
+}
+function livere() {
+    if (k1) {
+        (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+            if (typeof LivereTower === 'function') { return; }
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+        k1--
+    }
+}
+function changes() {
     var res = ''
     console.log(index, 1)
     if (index == 0) {
@@ -1116,6 +1135,51 @@ $("#up").click(function () {
     }
     $("#res").text(res)
     $('#copy').attr('data-clipboard-text', res)
+}
+
+function onDemandScript(url, callback) {
+    callback = (typeof callback != 'undefined') ? callback : {};
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: callback,
+        dataType: "script",
+        cache: true
+    });
+}
+
+var done = true
+$("#up").click(function () {
+    if (done) {
+        $("#te").hide();
+        $("#p2").show();
+        t = 0
+        onDemandScript("https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js",
+            function () {
+                console.log("pinyin_dict_withtone.min.js done")
+                addProcess()
+            })
+        onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js', function () {
+            console.log("pinyin_dict_polyphone.min.js done")
+            addProcess()
+        });
+        onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js', function () {
+            console.log("pinyinUtil.min.js done")
+            addProcess()
+        });
+        onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js', function () {
+            console.log("segmentit.js done")
+            const {
+                Segment,
+                useDefault
+            } = require('segmentit');
+            segmentit = useDefault(new Segment());
+            addProcess()
+        });
+        done--
+    } else {
+        changes()
+    }
 });
 
 var clipboard = new ClipboardJS('#copy');
