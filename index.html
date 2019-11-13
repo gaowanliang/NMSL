@@ -143,7 +143,7 @@
                     <i class="mdui-checkbox-icon"></i>
                     "我"转化为"👴"
                 </label><br>
-                <label class="mdui-checkbox">
+                <label class="mdui-checkbox" onclick="livere()">
                     <input type="checkbox" id="checklook" />
                     <i class="mdui-checkbox-icon"></i>
                     如果发现转换后的结果缺字或乱码，请选中这个
@@ -208,7 +208,7 @@
     <div class="mdui-dialog" id="example-1">
         <div class="mdui-dialog-title">抽象结果</div>
         <div class="mdui-progress">
-            <div id="p1" class="mdui-progress-determinate" style="width: 20%;"></div>
+            <div id="p1" class="mdui-progress-determinate" style="width:0%;"></div>
         </div>
         <div class="mdui-dialog-content" id='res'>
             <p id="te">出现错误，请重试</p>
@@ -241,8 +241,6 @@
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
     <script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js"></script>
     <script type="text/javascript" src="src/js/main.min.js">
     </script>
     <footer class="mdui-center mdui-text-center">
