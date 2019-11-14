@@ -89,7 +89,12 @@ function addProcess() {
     kuan++
     eval('$("#p1").width("' + 20 * kuan + '%")')
     if (kuan >= 5) {
-        loading()
+        try {
+            loading()
+        }
+        catch (err) {
+            $("#res").text("出现未知错误，请重试")
+        }
         $("#p1").hide();
         changes()
     }
