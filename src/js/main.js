@@ -19,8 +19,7 @@ function isEmojiChar(text) {
     }
 }
 
-if(window.location.href.indexOf("gitee")!=-1)
-{
+if (window.location.href.indexOf("gitee") != -1) {
     $("body").addClass("mdui-theme-primary-red mdui-theme-accent-red")
 }
 
@@ -199,7 +198,7 @@ function onDemandScript(url, callback) {
         type: "GET",
         url: url,
         success: callback,
-        dataType: "script",
+        dataType: url.substring(url.lastIndexOf('.') + 1) == "js" ? "script" : "json",
         cache: true
     });
 }
@@ -208,8 +207,9 @@ function onDemandScript(url, callback) {
 var done = true
 $("#up").click(function () {
     if (done) {
-        $.getJSON('src/data/emoji.json', function (data) {
+        onDemandScript('src/data/emoji.json', function (data) {
             sj = data
+            //console.log(data)
             $("#te").hide();
             $("#p2").show();
             t = 0
