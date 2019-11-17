@@ -24,10 +24,16 @@ if (window.location.href.indexOf("gitee") != -1) {
 }
 
 
+
 var segmentit, regex
 var inst = new mdui.Tab('#tab'), index = 0;
 document.getElementById('tab').addEventListener('change.mdui.tab', function (event) {
     index = event._detail.index
+    if (index == 2) {
+        $("#up").text("给👴论证")
+    } else {
+        $("#up").text("给👴转")
+    }
 });
 
 const getTextFeature = (text, color) => {
@@ -192,6 +198,8 @@ function changes() {
         } else {
             res = ($("#t1").val()).replace(/([\u4e00-\u9fa5])/g, " $1 ").replace(/  /g, " ").trim()
         }
+    } else if (index == 2) {
+        res = generate()
     }
     $("#res").text(res)
     $('#copy').attr('data-clipboard-text', res)
