@@ -80,27 +80,11 @@ const ifEmoji = (text) => {
 }
 var bfl = Object.assign({}, sj), bfsy = {}, sy = {}
 
-function loading() {
-    Object.keys(sj).forEach(function (key) {
-        sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-        if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
-            eval("delete bfl." + key)
-        } else {
-            bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-        }
-    });
-}
+
 var kuan = 0, k1 = 1
 function addProcess() {
     kuan++
-    eval('$("#p1").width("' + 20 * kuan + '%")')
-    if (kuan >= 5) {
-        try {
-            loading()
-        }
-        catch (err) {
-            $("#res").text("出现未知错误，请重试")
-        }
+    if (kuan >= 4) {
         $("#p1").hide();
         changes()
     }
@@ -200,6 +184,8 @@ function changes() {
         }
     } else if (index == 2) {
         res = generate()
+    } else if (index == 3) {
+        res = chemicalChange($("#t2").val())
     }
     $("#res").text(res)
     $('#copy').attr('data-clipboard-text', res)
@@ -216,12 +202,13 @@ function onDemandScript(url, callback) {
     });
 }
 
-
+var bfl, bfsy, sy
 var done = true
 $("#up").click(function () {
     if (done) {
         onDemandScript('src/data/emoji.json', function (data) {
             sj = data
+            bfl = Object.assign({}, sj), bfsy = {}, sy = {}
             //console.log(data)
             $("#te").hide();
             $("#p2").show();
@@ -239,13 +226,17 @@ $("#up").click(function () {
                 console.log("emoji-regex.js done")
                 const emojiRegex = require('emoji-regex');
                 regex = emojiRegex();
+                Object.keys(sj).forEach(function (key) {
+                    sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
+                    console.log(sj[key], key)
+                    if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
+                        eval("delete bfl." + key)
+                    } else {
+                        bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
+                    }
+                });
                 addProcess()
             });
-            onDemandScript("https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js",
-                function () {
-                    console.log("pinyin_dict_withtone.min.js done")
-                    addProcess()
-                })
             onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js', function () {
                 console.log("pinyin_dict_polyphone.min.js done")
                 addProcess()
@@ -254,7 +245,6 @@ $("#up").click(function () {
                 console.log("pinyinUtil.min.js done")
                 addProcess()
             });
-
             done--
         })
 

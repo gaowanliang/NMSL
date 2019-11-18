@@ -39,13 +39,17 @@
             <label>抽象带师</label>
         </a>
         <a href="#tab2" class="mdui-ripple mdui-ripple-white">
-            <i class="mdui-icon material-icons"><img style="width: 24px"
-                    src="https://cdn.jsdelivr.net/gh/gaowanliang/p/114514.png" /></i>
+            <i class="mdui-icon material-icons"><img style="width: 30px" src="/src/dssq.png" /></i>
             <label>打字带空格</label>
         </a>
         <a href="#tab3" class="mdui-ripple mdui-ripple-white">
-            <i class="mdui-icon material-icons">pets</i>
-            <label>野兽先辈论证机</label>
+            <i class="mdui-icon material-icons"><img style="width: 24px"
+                    src="https://cdn.jsdelivr.net/gh/gaowanliang/p/114514.png" /></i>
+            <label>万能论证机</label>
+        </a>
+        <a href="#tab4" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">whatshot</i>
+            <label>化学元素转换</label>
         </a>
     </div>
     </div>
@@ -253,15 +257,40 @@
             </div>
         </div>
     </div>
+    <div id="tab4" class="mdui-p-a-2">
+        <div style="margin-top: 20px;" class="mdui-container">
+            <div class="mdui-row">
+                <div style="width: 290px;" class="mdui-center">
+                    <div class="mdui-card">
+                        <div class="mdui-card-media">
+                            <img class="mdui-img-fluid" src="https://i.loli.net/2019/11/18/AF4TYZ7P1RDjJLy.png" />
+                        </div>
+                        <div class="mdui-card-actions">
+                            <button class="mdui-btn mdui-ripple"
+                                onclick="location.href='https://chouxiang.ml/'">国际版网站</button>
+                            <button class="mdui-btn mdui-ripple"
+                                onclick="location.href='https://gaowanliang.gitee.io/nmsl/'">国内版网站</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdui-container">
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">请输入需要转成化学元素的句子</label>
+                <textarea class="mdui-textfield-input" id="t2" type="text" required></textarea>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="mdui-container">
         <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-col-xs-2 mdui-col-offset-xs-9"
             id="up" mdui-dialog="{target: '#example-1'}">给👴转</button>
     </div>
     <div class="mdui-dialog" id="example-1">
         <div class="mdui-dialog-title">抽象结果</div>
-        <div class="mdui-progress">
-            <div id="p1" class="mdui-progress-determinate" style="width:0%;"></div>
-        </div>
         <div class="mdui-dialog-content" style="overflow-wrap: break-word;" id='res'>
             <p id="te">出现错误，请重试</p>
             <div id="p2" style="display: none;">
@@ -293,7 +322,11 @@
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
     <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_withtone.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js"></script>
     <script type="text/javascript" src="src/js/dssq.js"></script>
+    <script type="text/javascript" src="src/js/chemical.min.js"></script>
     <script type="text/javascript" src="src/js/main.min.js"></script>
     <footer class="mdui-center mdui-text-center">
         <p>一个纯前端的抽象话转换器 Powered by:高玩梁</p>
