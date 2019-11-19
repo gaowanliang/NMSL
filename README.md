@@ -15,6 +15,8 @@
 #### 词库
 本网页为纯前端制作，无后台服务器，大家可以在[src/js/fast.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/fast.js)找到完整的抽象话对应表。
 
+源词库提供者 https://github.com/THUzhangga/NMSL 非常感谢此词库的提供者 THUzhangga 当然此词库并不太全，我加入了很多新词。
+
 #### 纯前端中文分词系统
 本网页使用了一个纯前端中文分词系统 [segmentit.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentit.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用的词库比较老旧，有时间会更新。使用方法如下：
 首先在html中引入js包（已使用CDN加速）
