@@ -954,8 +954,10 @@ const {
 
 if (window.location.href.indexOf("gitee") != -1) {
     $("body").addClass("mdui-theme-primary-teal mdui-theme-accent-teal")
+    $("#domestic").hide()
 } else {
     $("body").addClass("mdui-theme-primary-purple mdui-theme-accent-purple")
+    $("#global").hide()
 }
 
 const regex = emojiRegex();

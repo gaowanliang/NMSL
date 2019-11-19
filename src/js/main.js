@@ -21,6 +21,9 @@ function isEmojiChar(text) {
 
 if (window.location.href.indexOf("gitee") != -1) {
     $("body").addClass("mdui-theme-primary-red mdui-theme-accent-red")
+    $("#domestic").hide()
+}else{
+    $("#global").hide()
 }
 
 

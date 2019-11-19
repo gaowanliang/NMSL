@@ -12,10 +12,20 @@
 
 词库补全计划已提上日程，请耐心等待
 
+可以通过[这个文档进行词库补全](https://docs.qq.com/sheet/DQmlGU0lualVBUU5h) https://docs.qq.com/sheet/DQmlGU0lualVBUU5h
+
+接下来可能会结合腾讯云SCF实现Serverless版本，看具体需求了
+
 #### 词库
 本网页为纯前端制作，无后台服务器，大家可以在[src/js/fast.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/fast.js)找到完整的抽象话对应表。
 
-源词库提供者 https://github.com/THUzhangga/NMSL 非常感谢此词库的提供者 THUzhangga 当然此词库并不太全，我加入了一些新词。
+**源词库提供者 https://github.com/THUzhangga/NMSL 非常感谢此词库的提供者 THUzhangga**
+
+本来是想做着玩玩，没想到大家这么喜欢，原词库作者找到我我才想起来没有加出处，在这里向原词库作者报以诚挚的歉意。
+
+当然此词库并不太全，我加入了一些新词，如国家地区旗帜，后缀修饰词语，爷，弟弟等
+
+等。而且原词库作者也提醒了我可以通过多端协作的方式来进行词库补全，这里也感谢原词库作者提供的想法。
 
 #### 纯前端中文分词系统
 本网页使用了一个纯前端中文分词系统 [segmentit.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentit.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用的词库比较老旧，有时间会更新。使用方法如下：
