@@ -28,7 +28,7 @@
 而且原词库作者也提醒了我可以通过多端协作的方式来进行词库补全，这里也感谢原词库作者提供的想法。
 
 #### 词库贡献名单(排名按照名单贡献者先后顺序) [加入词库补全计划](https://docs.qq.com/sheet/DQmlGU0lualVBUU5h)
-Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦
+Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦 弁才天
 
 
 #### 纯前端中文分词系统
@@ -75,4 +75,3 @@ function onDemandScript(url, callback) {
 [1] 如何判断当前浏览器是否支持某一个emoji  https://www.jianshu.com/p/52fe1ff46f93
 
 [2] 中文分词模块 https://github.com/gaowanliang/segmentCX
-

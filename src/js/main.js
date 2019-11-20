@@ -216,7 +216,7 @@ $("#up").click(function () {
             $("#te").hide();
             $("#p2").show();
             t = 0
-            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentCX.min.js', function () {
+            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/segmentCX.js', function () {
                 console.log("segmentit.js done")
                 const {
                     Segment,
@@ -231,7 +231,7 @@ $("#up").click(function () {
                 regex = emojiRegex();
                 Object.keys(sj).forEach(function (key) {
                     sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-                    console.log(sj[key], key)
+                    //console.log(sj[key], key)
                     if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
                         eval("delete bfl." + key)
                     } else {
