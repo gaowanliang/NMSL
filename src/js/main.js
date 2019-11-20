@@ -255,29 +255,31 @@ $("#up").click(function () {
                 segmentit = useDefault(new Segment());
                 addProcess()
             });
-            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js', function () {
-                console.log("emoji-regex.js done")
-                const emojiRegex = require('emoji-regex');
-                regex = emojiRegex();
-                Object.keys(sj).forEach(function (key) {
-                    sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-                    //console.log(sj[key], key)
-                    if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
-                        eval("delete bfl." + key)
-                    } else {
-                        bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
-                    }
-                });
-                addProcess()
-            });
+
             onDemandScript(p1, function () {
                 console.log("pinyin_dict_polyphone.min.js done")
                 addProcess()
+                onDemandScript(p2, function () {
+                    console.log("pinyinUtil.min.js done")
+                    addProcess()
+                    onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js', function () {
+                        console.log("emoji-regex.js done")
+                        const emojiRegex = require('emoji-regex');
+                        regex = emojiRegex();
+                        Object.keys(sj).forEach(function (key) {
+                            sy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
+                            //console.log(sj[key], key)
+                            if (!ifEmoji(sj[key]) && isEmojiChar(sj[key])) {
+                                eval("delete bfl." + key)
+                            } else {
+                                bfsy[pinyinUtil.getPinyin(key, '', false, true) + ""] = key
+                            }
+                        });
+                        addProcess()
+                    });
+                });
             });
-            onDemandScript(p2, function () {
-                console.log("pinyinUtil.min.js done")
-                addProcess()
-            });
+
             done--
         })
 
