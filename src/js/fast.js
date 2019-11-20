@@ -54,6 +54,11 @@ document.getElementById('tab').addEventListener('change.mdui.tab', function (eve
     } else {
         $("#up").text("给👴转")
     }
+    if (index == 1) {
+        $("#up").hide()
+    } else {
+        $("#up").show()
+    }
 });
 
 const getTextFeature = (text, color) => {
@@ -128,6 +133,24 @@ function chemicalChange(text) {
         }
     }
     return res
+}
+
+function offensive() {
+
+    if ($("input[id='zhadd']").is(':checked') != true) {
+        res = (($("#t1").val()).split("")).join(" ")
+    } else {
+        res = ($("#t1").val()).replace(/([\u4e00-\u9fa5])/g, " $1 ").replace(/  /g, " ").trim()
+    }
+    print(res)
+}
+
+function aoligei() {
+    print(aoli())
+}
+
+function replacement() {
+    print(chemicalChange($("#t2").val()))
 }
 
 function generate() {
@@ -257,20 +280,16 @@ $("#up").click(function () {
         if ($("input[id='checkye']").is(':checked') == true) {
             res = res.replace(/我/g, "👴")
         }
-    } else if (index == 1) {
-        if ($("input[id='zhadd']").is(':checked') != true) {
-            res = (($("#t1").val()).split("")).join(" ")
-        } else {
-            res = ($("#t1").val()).replace(/([\u4e00-\u9fa5])/g, " $1 ").replace(/  /g, " ").trim()
-        }
     } else if (index == 2) {
         res = generate()
-    } else if (index == 3) {
-        res = chemicalChange($("#t2").val())
     }
+    print(res)
+});
+
+function print(res) {
     $("#res").text(res)
     $('#copy').attr('data-clipboard-text', res)
-});
+}
 
 var clipboard = new ClipboardJS('#copy');
 clipboard.on('success', function (e) {

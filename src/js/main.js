@@ -19,10 +19,14 @@ function isEmojiChar(text) {
     }
 }
 
+var p1 = "https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js",
+    p2 = "https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js",
+    cdn = "https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/"
+
 if (window.location.href.indexOf("gitee") != -1) {
     $("body").addClass("mdui-theme-primary-red mdui-theme-accent-red")
     $("#domestic").hide()
-}else{
+} else {
     $("#global").hide()
 }
 
@@ -37,8 +41,43 @@ document.getElementById('tab').addEventListener('change.mdui.tab', function (eve
     } else {
         $("#up").text("给👴转")
     }
+    if (index == 1) {
+        $("#up").hide()
+    } else {
+        $("#up").show()
+    }
 });
 
+function offensive() {
+    res = ''
+    if ($("input[id='zhadd']").is(':checked') != true) {
+        res = (($("#t1").val()).split("")).join(" ")
+    } else {
+        res = ($("#t1").val()).replace(/([\u4e00-\u9fa5])/g, " $1 ").replace(/  /g, " ").trim()
+    }
+    print(res)
+}
+
+function replacement() {
+    onDemandScript(p1, function () {
+        onDemandScript(p2, function () {
+            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/chemical.min.js', function () {
+                print(chemicalChange($("#t2").val()))
+            })
+        });
+    });
+}
+
+function aoligei() {
+    onDemandScript(cdn + 'src/js/aoligei.js', function () {
+        print(aoli())
+    })
+}
+
+function print(res) {
+    $("#res").text(res)
+    $('#copy').attr('data-clipboard-text', res)
+}
 const getTextFeature = (text, color) => {
     try {
         const canvas = document.createElement('canvas');
@@ -179,19 +218,10 @@ function changes() {
         if ($("input[id='checkye']").is(':checked') == true) {
             res = res.replace(/我/g, "👴")
         }
-    } else if (index == 1) {
-        if ($("input[id='zhadd']").is(':checked') != true) {
-            res = (($("#t1").val()).split("")).join(" ")
-        } else {
-            res = ($("#t1").val()).replace(/([\u4e00-\u9fa5])/g, " $1 ").replace(/  /g, " ").trim()
-        }
-    } else if (index == 2) {
+    } else {
         res = generate()
-    } else if (index == 3) {
-        res = chemicalChange($("#t2").val())
     }
-    $("#res").text(res)
-    $('#copy').attr('data-clipboard-text', res)
+    print(res)
 }
 
 function onDemandScript(url, callback) {
@@ -216,7 +246,7 @@ $("#up").click(function () {
             $("#te").hide();
             $("#p2").show();
             t = 0
-            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/segmentCX.js', function () {
+            onDemandScript(cdn + 'src/js/segmentCX.js', function () {
                 console.log("segmentit.js done")
                 const {
                     Segment,
@@ -240,11 +270,11 @@ $("#up").click(function () {
                 });
                 addProcess()
             });
-            onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js', function () {
+            onDemandScript(p1, function () {
                 console.log("pinyin_dict_polyphone.min.js done")
                 addProcess()
             });
-            onDemandScript('https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js', function () {
+            onDemandScript(p2, function () {
                 console.log("pinyinUtil.min.js done")
                 addProcess()
             });

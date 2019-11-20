@@ -27,7 +27,6 @@
     <div class="mdui-appbar">
         <div class="mdui-toolbar mdui-color-theme">
             <a href="javascript:;" class="mdui-typo-headline">抽象带师</a>
-            <a href="javascript:;" class="mdui-typo-title">抽象话转换器</a>
             <div class="mdui-toolbar-spacer"></div>
             <a href="https://github.com/gaowanliang/NMSL" target="_blank" class="mdui-btn mdui-btn-icon"><i
                     class="mdui-icon material-icons fa fa-github"></i></a>
@@ -36,21 +35,16 @@
     <div id="tab" class="mdui-tab mdui-tab-full-width mdui-color-theme" mdui-tab>
         <a href="#tab1" class="mdui-ripple mdui-ripple-white">
             <i class="mdui-icon material-icons">🐎</i>
-            <label>抽象带师</label>
+            <label>抽象话转换器</label>
         </a>
         <a href="#tab2" class="mdui-ripple mdui-ripple-white">
-            <i class="mdui-icon material-icons"><img style="width: 30px"
-                    src="https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/dssq.png" /></i>
-            <label>打字带空格</label>
+            <i class="mdui-icon material-icons">weekend</i>
+            <label>杂项</label>
         </a>
         <a href="#tab3" class="mdui-ripple mdui-ripple-white">
             <i class="mdui-icon material-icons"><img style="width: 24px"
                     src="https://cdn.jsdelivr.net/gh/gaowanliang/p/114514.png" /></i>
             <label>万能论证机</label>
-        </a>
-        <a href="#tab4" class="mdui-ripple mdui-ripple-white">
-            <i class="mdui-icon material-icons">whatshot</i>
-            <label>化学元素转换</label>
         </a>
     </div>
     </div>
@@ -73,7 +67,8 @@
                                 onclick="location.href='https://chouxiang.ml/'">国际版网站</button>
                             <button id="domestic" class="mdui-btn mdui-btn-dense mdui-ripple"
                                 onclick="location.href='https://gaowanliang.gitee.io/nmsl/'">国内版网站</button>
-                            <button class="mdui-btn mdui-ripple" onclick="location.href='./'">动态加载版网站</button>
+                            <button class="mdui-btn mdui-btn-dense mdui-ripple"
+                                onclick="location.href='./'">动态加载版网站</button>
                             <button class="mdui-btn mdui-btn-dense "
                                 onclick="location.href='https://github.com/gaowanliang/NMSL'">⭐ with Github</button>
                             <button class="mdui-btn mdui-btn-dense "
@@ -166,6 +161,100 @@
         </div>
     </div>
     <div id="tab2" class="mdui-p-a-2">
+        <div class="mdui-panel mdui-panel-popout mdui-container" mdui-panel style="margin-top: 20px;">
+
+
+            <div class="mdui-panel-item">
+                <div class="mdui-panel-item-header">
+                    <div class="mdui-panel-item-title">打字带空格</div>
+                    <div class="mdui-panel-item-summary">将你输入的每个字之间都加上空格</div>
+                    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                </div>
+                <div class="mdui-panel-item-body">
+                    <div class="mdui-container">
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">请输入需要加空格的话</label>
+                            <textarea class="mdui-textfield-input" id="t1" type="text" required></textarea>
+                        </div>
+                        <div>
+                            <label class="mdui-checkbox">
+                                <input type="checkbox" id="zhadd" />
+                                <i class="mdui-checkbox-icon"></i>
+                                只有中文之间才加空格，数字，英文不加
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mdui-panel-item-actions">
+                        <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent"
+                            onclick="offensive()" mdui-dialog="{target: '#e'}">一　転　攻　勢</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdui-panel-item">
+                <div class="mdui-panel-item-header">
+                    <div class="mdui-panel-item-title">化学元素转换</div>
+                    <div class="mdui-panel-item-summary">将你输入的话用化学元素转换</div>
+                    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                </div>
+                <div class="mdui-panel-item-body">
+                    <div class="mdui-container">
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">请输入需要转成化学元素的句子</label>
+                            <textarea class="mdui-textfield-input" id="t2" type="text" required></textarea>
+                        </div>
+                    </div>
+                    <div class="mdui-panel-item-actions">
+                        <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent"
+                            onclick="replacement()" mdui-dialog="{target: '#e'}">置换</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdui-panel-item">
+                <div class="mdui-panel-item-header">
+                    <div class="mdui-panel-item-title">删减片段生成</div>
+                    <div class="mdui-panel-item-summary">又到了👴最爱的删减环节</div>
+                    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                </div>
+                <div class="mdui-panel-item-body">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">这段视频拍摄于(请填时间节点)</label>
+                        <input id="aoTime" class="mdui-textfield-input" type="text" value="1999年" />
+                    </div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">当时(请填事件)</label>
+                        <input id="aoEvent" class="mdui-textfield-input" type="text" value="外星人入侵" />
+                    </div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">(请填主人公)</label>
+                        <input id="aoProtagonist" class="mdui-textfield-input" type="text" value="辽宁朝阳巨魔" />
+                    </div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">为了(请填具体事件)</label>
+                        <input id="aoSpecific" class="mdui-textfield-input" type="text" value="激励广大民众积极抗敌" />
+                    </div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">而发表了这段振奋人心的演讲，后来因为（请填具体事件）而被删除</label>
+                        <input id="aoDel" class="mdui-textfield-input" type="text" value="为了隐瞒这份历史" />
+                    </div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">现在在（请填网站）又能看到这段视频</label>
+                        <input id="aoWeb" class="mdui-textfield-input" type="text" value="b站" />
+                    </div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">我非常地（请填感想）</label>
+                        <input id="aoFeeling" class="mdui-textfield-input" type="text" value="疑惑，说好的保密协议呢？" />
+                    </div>
+                    <div class="mdui-panel-item-actions">
+                        <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent" onclick="aoligei()"
+                            mdui-dialog="{target: '#e'}">奥利给</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tab3" class="mdui-p-a-2">
         <div style="margin-top: 20px;" class="mdui-container">
             <div class="mdui-row">
                 <div style="width: 290px;" class="mdui-center">
@@ -201,21 +290,6 @@
                 </div>
             </div>
         </div>
-        <div class="mdui-container">
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">请输入需要加空格的话</label>
-                <textarea class="mdui-textfield-input" id="t1" type="text" required></textarea>
-            </div>
-            <div>
-                <label class="mdui-checkbox">
-                    <input type="checkbox" id="zhadd" />
-                    <i class="mdui-checkbox-icon"></i>
-                    只有中文之间才加空格，数字，英文不加
-                </label>
-            </div>
-        </div>
-    </div>
-    <div id="tab3" class="mdui-p-a-2">
         <div name="info_form" class="mdui-container">
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">迫害对象</label>
@@ -262,36 +336,11 @@
             </div>
         </div>
     </div>
-    <div id="tab4" class="mdui-p-a-2">
-        <div style="margin-top: 20px;" class="mdui-container">
-            <div class="mdui-row">
-                <div style="width: 290px;" class="mdui-center">
-                    <div class="mdui-card">
-                        <div class="mdui-card-media">
-                            <img class="mdui-img-fluid" src="https://i.loli.net/2019/11/18/AF4TYZ7P1RDjJLy.png" />
-                        </div>
-                        <div class="mdui-card-actions">
-                            <button class="mdui-btn mdui-ripple"
-                                onclick="location.href='https://chouxiang.ml/'">国际版网站</button>
-                            <button class="mdui-btn mdui-ripple"
-                                onclick="location.href='https://gaowanliang.gitee.io/nmsl/'">国内版网站</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mdui-container">
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">请输入需要转成化学元素的句子</label>
-                <textarea class="mdui-textfield-input" id="t2" type="text" required></textarea>
-            </div>
-        </div>
-    </div>
     <div class="mdui-container">
         <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-col-xs-2 mdui-col-offset-xs-9"
-            id="up" mdui-dialog="{target: '#example-1'}">给👴转</button>
+            id="up" mdui-dialog="{target: '#e'}">给👴转</button>
     </div>
-    <div class="mdui-dialog" id="example-1">
+    <div class="mdui-dialog" id="e">
         <div class="mdui-dialog-title">抽象结果</div>
         <div class="mdui-progress">
             <div id="p1" class="mdui-progress-determinate" style="width:0%;"></div>
@@ -342,9 +391,10 @@
         src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script src="src\js\segmentCX.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/segmentCX.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/aoligei.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js"></script>
-    <script type="text/javascript" src="src/js/fast.min.js">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/fast.min.js">
     </script>
     <footer class="mdui-center mdui-text-center">
         <p class="mdui-typo-caption-opacity">本页面使用了纯前端中文分词黑科技，加载较缓慢，请耐心等待</p>

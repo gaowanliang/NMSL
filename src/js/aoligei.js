@@ -1,0 +1,1 @@
+function aoli(){return"这段视频拍摄于"+$("#aoTime").val()+"，当时"+$("#aoEvent").val()+"，"+$("#aoProtagonist").val()+"为了"+$("#aoSpecific").val()+"，而发表了这段振奋人心的演讲，后来因为"+$("#aoDel").val()+"而被删除，现在在"+$("#aoWeb").val()+"又能看到这段视频，我非常地"+$("#aoFeeling").val()}
