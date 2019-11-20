@@ -216,7 +216,7 @@ $("#up").click(function () {
             $("#te").hide();
             $("#p2").show();
             t = 0
-            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js', function () {
+            onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentCX.min.js', function () {
                 console.log("segmentit.js done")
                 const {
                     Segment,

@@ -25,13 +25,17 @@
 
 当然此词库并不太全，我加入了一些新词，如国家地区旗帜，后缀修饰词语，爷，弟弟等
 
-等。而且原词库作者也提醒了我可以通过多端协作的方式来进行词库补全，这里也感谢原词库作者提供的想法。
+而且原词库作者也提醒了我可以通过多端协作的方式来进行词库补全，这里也感谢原词库作者提供的想法。
+
+#### 词库贡献名单(排名按照名单贡献者先后顺序) [加入词库补全计划](https://docs.qq.com/sheet/DQmlGU0lualVBUU5h)
+Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦
+
 
 #### 纯前端中文分词系统
-本网页使用了一个纯前端中文分词系统 [segmentit.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentit.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用的词库比较老旧，有时间会更新。使用方法如下：
+本网页使用了一个纯前端中文分词系统(已经针对抽象词进行优化) [segmentCX.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentCX.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用方法如下：
 首先在html中引入js包（已使用CDN加速）
 ```html
-<script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentit.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gaowanliang/p/segmentCX.min.js"></script>
 ```
 之后输入js代码
 ```javascript
@@ -70,5 +74,5 @@ function onDemandScript(url, callback) {
  
 [1] 如何判断当前浏览器是否支持某一个emoji  https://www.jianshu.com/p/52fe1ff46f93
 
-[2] 中文分词模块 https://github.com/linonetwo/segmentit
+[2] 中文分词模块 https://github.com/gaowanliang/segmentCX
 
