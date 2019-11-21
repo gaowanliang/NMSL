@@ -218,10 +218,12 @@ function changes() {
         if ($("input[id='checkye']").is(':checked') == true) {
             res = res.replace(/我/g, "👴")
         }
+        print(res)
     } else {
-        res = generate()
+        onDemandScript(cdn + 'src/js/dssq.min.js', function () {
+            print(generate())
+        })
     }
-    print(res)
 }
 
 function onDemandScript(url, callback) {
@@ -231,7 +233,7 @@ function onDemandScript(url, callback) {
         url: url,
         success: callback,
         dataType: url.substring(url.lastIndexOf('.') + 1) == "js" ? "script" : "json",
-        cache: true
+        cache: true,
     });
 }
 
@@ -246,7 +248,7 @@ $("#up").click(function () {
             $("#te").hide();
             $("#p2").show();
             t = 0
-            onDemandScript(cdn + 'src/js/segmentCX.js', function () {
+            onDemandScript(cdn + 'src/js/segmentCX.min.js', function () {
                 console.log("segmentit.js done")
                 const {
                     Segment,

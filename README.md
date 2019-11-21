@@ -1,5 +1,5 @@
 # NMSL
-## 一个纯前端的抽象话转换器——欢迎 Star
+## 一个纯前端的抽象话(及相关亚文化)转换器——欢迎 Star ⭐
 ![其实根本没有孙笑川，或者说人人都是孙笑川](https://cdn.jsdelivr.net/gh/gaowanliang/p/1.png)
 
 > 人人都说抽象话，无人识得李老八。
@@ -28,8 +28,7 @@
 而且原词库作者也提醒了我可以通过多端协作的方式来进行词库补全，这里也感谢原词库作者提供的想法。
 
 #### 词库贡献名单(排名按照名单贡献者先后顺序) [加入词库补全计划](https://docs.qq.com/sheet/DQmlGU0lualVBUU5h)
-Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦 弁才天
-
+Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦 弁才天 你👴 Alooha 小汇小汇
 
 #### 纯前端中文分词系统（针对抽象词优化版）
 本网页使用了一个纯前端中文分词系统(已经针对抽象词进行优化) [segmentCX.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentCX.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用方法如下：
@@ -79,7 +78,7 @@ console.log(result);
 
 部分emoji在某些平台上尚未支持(如🦴,Windows 10平台可以看见是骨头，Android 8 则为错误显示)，我使用了[1]中的方法在前端对emoji词库进行了修改，使其在任何平台都不会乱码。(在这里对[1]进行存档)
 
-emoji 的一个特性是作为一张图片它不能用代码上色，考虑采取对 canvas 上的 emoji 做两次 fillStyle的方法，判断前后像素的 RGBA 是否完全相同，相同则为 emoji。这个方法的弊端是，并不是所有系统的 emoji 都是图片，有的系统里 emoji 就是一种字体，是可以被上色的。这个方法的弊端是，并不是所有系统的 emoji 都是图片，有的系统里 emoji 就是一种字体，是可以被上色的。还可以通过 Modernizr 判断是否支持 emoji，使用的是在 canvas 上打印出一个考拉🐨的 emoji（Modernizr只是检测浏览器特性，不对某个 emoji 做针对性判断），通过判断画布上是否依然为空白画布来区分。这个方法的弊端是，有的系统对于不支持的字符显示的并非是空白，而是一个方框，也是可以在 canvas 上画出来的；其次是效率堪忧，每一次需要遍历长度为(devicePixelRatio*12 - 1)^2的数组，即121或529个像素，讲真对 canvas 做 getImageData 操作效率上并不高。
+emoji 的一个特性是作为一张图片它不能用代码上色，考虑采取对 canvas 上的 emoji 做两次 fillStyle的方法，判断前后像素的 RGBA 是否完全相同，相同则为 emoji。这个方法的弊端是，并不是所有系统的 emoji 都是图片，有的系统里 emoji 就是一种字体，是可以被上色的。还可以通过 Modernizr 判断是否支持 emoji，使用的是在 canvas 上打印出一个考拉🐨的 emoji（Modernizr只是检测浏览器特性，不对某个 emoji 做针对性判断），通过判断画布上是否依然为空白画布来区分。这个方法的弊端是，有的系统对于不支持的字符显示的并非是空白，而是一个方框，也是可以在 canvas 上画出来的；其次是效率堪忧，每一次需要遍历长度为(devicePixelRatio*12 - 1)^2的数组，即121或529个像素，讲真对 canvas 做 getImageData 操作效率上并不高。
 
 综上，现在给出一种解决方案，主要利用了在大部分系统下emoji不能被上色的原理，对于那些 emoji 可以被上色的平台做降级处理，在2*2的 canvas 上做像素比对。
 
