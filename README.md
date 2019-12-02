@@ -19,7 +19,7 @@
 接下来可能会结合腾讯云SCF实现Serverless版本，看具体需求了
 
 #### 词库
-本网页为纯前端制作，无后台服务器，大家可以在[src/js/fast.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/fast.js)找到完整的抽象话对应表。
+本网页为纯前端制作，无后台服务器，大家可以在[src/data/emoji.json](https://github.com/gaowanliang/NMSL/blob/master/src/data/emoji.json)找到完整的抽象话对应表。
 
 **源词库提供者 https://github.com/THUzhangga/NMSL 非常感谢此词库的提供者 THUzhangga**
 
@@ -30,13 +30,13 @@
 而且原词库作者也提醒了我可以通过多端协作的方式来进行词库补全，这里也感谢原词库作者提供的想法。
 
 #### 词库贡献名单(排名按照名单贡献者先后顺序) [加入词库补全计划](https://docs.qq.com/sheet/DQmlGU0lualVBUU5h)
-Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦 弁才天 你👴 Alooha 小汇小汇
-
+Madokristian chitaotao yiizg EasonRonaldo Rizerk  亮晶晶的圣晶石 leoasdf lamrrard 带带Dai善人 Stack 东莞庄生殖器 Submergence. sonoichi Miro 🔥🌟包 Night1611 🔪👦 弁才天 你👴 Alooha 小汇小汇 
+糖果 参死悟玄 林檎 汉卿 Tii nauiii HighestWallace 91大佬冯 鳕鱼 直鲁 泽爷 沈爷 龙猫馒头树 y z d 佛祖 带文学家 42 你💧❄王 我爱我马仔 我真的不是弟弟 MotherHunter SamuraiVess 荷兰斧头帮 拿两头蒜来 葛平🍛人没辣 aliez 炫炫炫炫炫 蘑菇猫 派带⭐ 王抽风 给利奥 365cent 高先生 带6⃣️❄️🏠夜染 doGikuS TYX KISHIN RF 
 #### 纯前端中文分词系统（针对抽象词优化版）
-本网页使用了一个纯前端中文分词系统(已经针对抽象词进行优化) [segmentCX.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentCX.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用方法如下：
+本网页使用了一个纯前端中文分词系统(已经针对抽象词进行优化) [segmentCX.js](https://github.com/gaowanliang/NMSL/blob/master/src/js/segmentCXH.min.js)（文件很大，3.6M+，如果有后端请尽量使用jieba等分词工具），使用方法如下：
 首先在html中引入js包（已使用CDN加速）
 ```html
-<script src="https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/segmentCX.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/src/js/segmentCXH.min.js"></script>
 ```
 之后输入js代码
 ```javascript
@@ -159,6 +159,8 @@ function onDemandScript(url, callback) {
 
 ### 参考资料
  
-* [1] 如何判断当前浏览器是否支持某一个emoji  https://www.jianshu.com/p/52fe1ff46f93
+* [1] 如何判断当前浏览器是否支持某一个emoji https://www.jianshu.com/p/52fe1ff46f93
 
 * [2] 中文分词模块 https://github.com/gaowanliang/segmentCX
+
+* [3] 一个实现汉字与拼音互转的小巧web工具库 https://github.com/gaowanliang/pinyinjs
