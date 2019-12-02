@@ -19,8 +19,8 @@ function isEmojiChar(text) {
     }
 }
 
-var p1 = "https://cdn.jsdelivr.net/gh/sxei/pinyinjs/dict/pinyin_dict_polyphone.min.js",
-    p2 = "https://cdn.jsdelivr.net/gh/sxei/pinyinjs/pinyinUtil.min.js",
+var p1 = "https://cdn.jsdelivr.net/gh/gaowanliang/pinyinjs/dict/pinyin_dict_polyphone.js",
+    p2 = "https://cdn.jsdelivr.net/gh/gaowanliang/pinyinjs/pinyinUtil.min.js",
     cdn = "https://cdn.jsdelivr.net/gh/gaowanliang/NMSL/"
 
 if (window.location.href.indexOf("gitee") != -1) {
@@ -37,15 +37,28 @@ var inst = new mdui.Tab('#tab'), index = 0;
 document.getElementById('tab').addEventListener('change.mdui.tab', function (event) {
     index = event._detail.index
     if (index == 2) {
-        $("#up").text("给👴论证")
+        $("#up").text("给" + $("#skinSel")[0][$("#skinSel").val()].innerText + "论证")
     } else {
-        $("#up").text("给👴转")
+        $("#up").text("给" + $("#skinSel")[0][$("#skinSel").val()].innerText + "转")
     }
     if (index == 1) {
         $("#up").hide()
     } else {
         $("#up").show()
     }
+});
+var skin = $("#skinSel")[0][$("#skinSel").val()].innerText
+$(() => {
+    $('#skinSel').change(() => {
+        // console.log('change');
+        // console.log($('#cont select option:selected').text());
+        console.log($('#skinSel').val());
+        temp = $(".mdui-panel-item-summary,.mdui-checkbox,#up")
+        for (i = 0, len = temp.length; i < len; i++) {
+            temp.eq(i).html(temp.eq(i).html().replace(eval("/" + skin + "/g"), $("#skinSel")[0][$("#skinSel").val()].innerText))
+        }
+        skin = $("#skinSel")[0][$("#skinSel").val()].innerText
+    });
 });
 
 function offensive() {
@@ -218,6 +231,9 @@ function changes() {
         if ($("input[id='checkye']").is(':checked') == true) {
             res = res.replace(/我/g, "👴")
         }
+        if ($("#skinSel").val() != 0) {
+            res = res.replace(/👴/g, $("#skinSel")[0][$("#skinSel").val()].innerText)
+        }
         print(res)
     } else {
         onDemandScript(cdn + 'src/js/dssq.min.js', function () {
@@ -248,7 +264,7 @@ $("#up").click(function () {
             $("#te").hide();
             $("#p2").show();
             t = 0
-            onDemandScript(cdn + 'src/js/segmentCX.min.js', function () {
+            onDemandScript('src/js/segmentCXH.min.js', function () {
                 console.log("segmentit.js done")
                 const {
                     Segment,
@@ -264,7 +280,7 @@ $("#up").click(function () {
                 onDemandScript(p2, function () {
                     console.log("pinyinUtil.min.js done")
                     addProcess()
-                    onDemandScript('https://cdn.jsdelivr.net/gh/gaowanliang/p/emoji-regex.js', function () {
+                    onDemandScript(cdn + 'src/js/emoji-regex.js', function () {
                         console.log("emoji-regex.js done")
                         const emojiRegex = require('emoji-regex');
                         regex = emojiRegex();
